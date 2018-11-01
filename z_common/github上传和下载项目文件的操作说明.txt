@@ -1,0 +1,59 @@
+
+
+
+ubuntu16.04
+=================================
+
+https://github.com/curvedball
+
+github账号与密码
+curvedball
+zbg~@ali~
+
+
+
+ssh-keygen -t rsa -C "zhangnuaa@163.com"	#成功的话会生成/root/.ssh/文件夹
+gedit /root/.ssh/id_rsa.pub					#复制除邮箱外的其他部分, 然后在https://github.com/curvedball界面中点击"Edit Profile"，然后增加这个ssh_key
+
+ssh -T git@github.com						#测试ssh_key是否能够正常连接github网站, 测试成功
+
+
+
+
+
+=======================================================================================================================
+mkdir /root/hello_world
+cd /root/hello_world
+echo "# hello_world" >> README.md
+
+git init
+git add .
+
+git config --global user.email "zhangnuaa@163.com"
+git config --global user.name "curvedball"
+git commit -m "first_commit"				  							#执行完前面两条命令后，本命令执行成功。
+在github网站的服务器的图形界面中新建一个仓库hello_world
+git remote add origin https://github.com/curvedball/hello_world.git		#该命令或许可以不用执行
+git push -u origin master                                               #根据命令行提示输入用户名和密码，能够上传文件成功
+
+
+
+
+
+
+=======================================================================================================================
+git add Duda2014_compression.pdf				#增加新的文件
+git status										#查看状态
+git commit -m "my_comment_测试上传第一个文件"   	#
+
+git push origin master							#将本地的文件同步到服务器去（上传）
+git pull										#将服务器文件同步到本地来（下载）
+
+
+
+
+
+
+
+
+

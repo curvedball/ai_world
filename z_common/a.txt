@@ -1,0 +1,17 @@
+a^n-b^n=(a-b)[a^(n-1)+a^(n-2)b+...+ab^(n-2)+b^(n-1)]
+
+(a+b)^n=C(n,0)a^n+C(n,1)a^(n-1)b+...+C(n,r)a^(n-r)b^r+...+C(n,n)b^n
+
+
+
+
+arcsinx+arccosx=π/2 arcsinx=π/2-arccosx
+两边取正弦
+左边=sin(arcsinx)=x
+右边=sin(π/2-arccosx)=cos(arccosx)=x (利用了sinx=cos(π/2-x)， 这从三角函数的定义就可获得)
+左边=右边≈≈
+
+
+nstant([1.0, 2.0])
+b = tf.constant([3.0, 4.0])
+c = a * b

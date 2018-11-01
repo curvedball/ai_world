@@ -1,0 +1,181 @@
+
+基于ubuntu16.04系统
+
+参考《tensorflow技术解析与实战》
+
+1．　安装pip工具
+以root用户执行:
+apt-get install python-pip python-dev build-essential 
+pip install --upgrade pip 
+
+
+2．　安装virtualenv工具
+pip install --upgrade virtualenv
+修改/usr/bin/pip  #错误处理
+
+
+3．使用virtualenv工具创建一个隔离的python环境
+mkdir /root/tensorflow
+virtualenv --system-site-packages /root/tensorflow
+
+
+
+4．　进入目录并加载隔离环境
+cd /root/tensorflow
+source bin/activate
+
+
+5. 在隔离环境中安装tensorflow指定版本
+pip install tensorflow==1.1.0
+
+
+6. 在隔离环境中测试tensorflow是否安装成功
+(tensorflow) $ python
+Python 2.7.12 (default, Oct 11 2016, 05:16:02)
+[GCC 4.2.1 Compatible Apple LLVM 7.0.2 (clang-700.1.81)] on darwin
+Type "help", "copyright", "credits" or "license" for more information.
+>>>
+>>> import tensorflow as tf
+>>> hello = tf.constant('Hello,TensorFlow!')
+>>> sess = tf.Session()
+>>> print sess.run(hello)
+Hello, TensorFlow!
+最后Ctrl+D退出python
+
+
+7. 在隔离环境中安装更多的依赖包
+pip install numpy --upgrade
+pip install matplotlib --upgrade
+pip install jupyter --upgrade
+pip install scikit-image --upgrade
+pip install librosa --upgrade
+pip install nltk --upgrade
+pip install keras --upgrade
+pip install git+https://github.com/tflearn/tflearn.git  
+#最后一个包必须先安装git: apt-get install git git-core git-gui git-doc git-svn git-cvs gitweb gitk git-email git-daemon-run git-el git-arch 然后安装这个框架ok
+
+
+
+
+
+8. 第一个神经网络程序
+#coding: utf-8
+
+'''
+zb: 第一个神经网络测试程序
+	参考《TensorFlow技术解析与实战》第８章
+'''
+
+import tensorflow as tf
+import numpy as np
+import matplotlib.pyplot as plt
+
+
+
+#my_data = np.linspace(-1,1,300)
+#print my_data
+
+x_data = np.linspace(-1,1,300)[:, np.newaxis]
+#print x_data
+
+noise = np.random.normal(0, 0.05, x_data.shape)
+#print noise
+
+
+y_data = np.square(x_data) - 0.5 + noise   #y = x^2 – 0.5 + 噪声
+#print y_data
+
+
+#定义神经网络的输入变量
+xs = tf.placeholder(tf.float32, [None, 1])
+ys = tf.placeholder(tf.float32, [None, 1])
+
+
+
+def add_layer(inputs, in_size, out_size, activation_function=None):
+	weights = tf.Variable(tf.random_normal([in_size, out_size]))
+	biases = tf.Variable(tf.zeros([1, out_size]) + 0.1)
+	Wx_plus_b = tf.matmul(inputs, weights) + biases
+	if activation_function is None:
+		outputs = Wx_plus_b
+	else:
+		outputs = activation_function(Wx_plus_b)
+
+	return outputs
+
+
+#定义神经网络的层
+h1 = add_layer(xs, 1, 10, activation_function=tf.nn.relu)
+prediction = add_layer(h1, 10, 1, activation_function=None)
+
+
+#定义损失函数
+loss = tf.reduce_mean(tf.reduce_sum(tf.square(ys - prediction), reduction_indices=[1]))
+
+
+#使用梯度下降法来训练，使得损失函数达到目标值
+train_step = tf.train.GradientDescentOptimizer(0.1).minimize(loss)
+
+
+
+init = tf.global_variables_initializer()
+with tf.Session() as sess:
+	sess.run(init)
+
+	fig = plt.figure()
+	ax = fig.add_subplot(1,1,1)
+	ax.scatter(x_data, y_data)
+	plt.ion()
+
+	for i in range(1000):
+		sess.run(train_step, feed_dict={xs: x_data, ys: y_data})  #喂入的数据就是训练数据
+		if i % 50 == 0:
+			print(sess.run(loss, feed_dict={xs: x_data, ys: y_data}))
+			pass
+	print "===================================="
+	prediction_value = sess.run(prediction, feed_dict={xs: x_data})
+	print prediction_value
+
+	lines = ax.plot(x_data, prediction_value, 'r-', lw=5)
+	#plt.pause(10)
+	plt.pause(0)
+
+
+
+
+9. 更多操作
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

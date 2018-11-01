@@ -1,0 +1,58 @@
+
+基于ubuntu16.04系统
+
+
+1. 安装samba并配置和在linux命令行中修改目录访问权限
+
+
+2. 安装MobaXterm
+
+
+3. 安装pycharm
+(1) 在MobaXterm中执行pycharm
+
+(2) 让pycharm支持多个用户在同一个linux服务器上运行
+修改pycharm的*.properties文件中的４行 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
