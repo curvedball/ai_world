@@ -47,7 +47,14 @@ git status										#查看状态
 git commit -m "my_comment_测试上传第一个文件"   	#
 
 git push origin master							#将本地的文件同步到服务器去（上传）
-git pull										#将服务器文件同步到本地来（下载）
+git pull origin master							#将服务器文件同步到本地来（下载）
+
+
+
+==========================下载服务器的文件目录到本地============================================
+git pull origin master							#将服务器文件同步到本地来（下载）
+
+
 
 
 
@@ -61,7 +68,7 @@ cd /usr/src/ai_world
 
 
 
-========================Loop Execute================================
+========================多次上传到服务器================================
 git add .
 git commit -m "my_comment2"
 git push origin master
