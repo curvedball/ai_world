@@ -1,0 +1,19 @@
+
+1. ubuntu16.04系统播放声音
+注意: 耳机要插在主机箱后面的声卡插孔内(有的时候，主机箱的前面板上的插孔不可用)
+播放一个mp3英语听力文件，然后在mplayer弹出的对话框中选择安装依赖的包, 保证mplayer可以播放出声音。
+但是，此时firefox浏览器内使用flashplayer播放仍有没有声音。
+
+2.
+apt-get install flashplugin-installer
+有必要的话，执行下命令: alsamixer 调节或者pavucontrol 调节(就是系统设置中的声音调节)
+使用ubuntu16.04自带的firefox访问wwww.baidu.com，播放一个视频，如果弹出要求安装flashplayer，则自动安装它;
+然后访问
+www.iqiyi.com
+www.youku.com
+发现都有声音了。
+
+访问
+https://www.coursera.org/learn/machine-learning
+
+查看《机器学习的课程》, 也有声音了。
