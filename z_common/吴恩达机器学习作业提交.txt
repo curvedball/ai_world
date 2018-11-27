@@ -1,0 +1,30 @@
+
+ubuntu16.04系统上的《吴恩达机器学习课程作业提交》
+1. 保证系统声音工作正常
+2. 安装curl命令行工具
+
+3. 提交出现错误时，必须更新octave的版本
+
+Octave 4.0.0 doesn't work well with submit scripts (on Ubuntu).
+Check the version on your terminal:
+octave --version
+if it's 4.0.0 update it.
+
+sudo add-apt-repository ppa:octave/stable
+sudo apt update
+sudo apt-get install octave
+
+
+4. octave-cli
+执行octave-cli命令，查看版本号
+
+
+5. submit
+提交成功。
+
+
+
+
+
+
+

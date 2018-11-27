@@ -13,6 +13,14 @@ www.iqiyi.com
 www.youku.com
 发现都有声音了。
 
+如果不行，则执行下面的命令:
+chmod -R a+rwx /dev/snd
+pulseaudio --start --log-target=syslog
+pavucontrol
+在弹出的对话框中选择LineOut进行测试，有声音。
+如果还是不行(比如使用mplayer播放一个a.mp3文件听不到声音)，说明物理上耳机插孔没有插好，重新插拔下就行。
+
+
 访问
 https://www.coursera.org/learn/machine-learning
 
