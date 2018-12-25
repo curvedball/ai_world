@@ -1,0 +1,17 @@
+
+(1)
+./pycharm.sh　　＃运行起来后，在ubuntu桌面的左侧锁定它的图标（点击后按住不动，超过１秒中可以拖动图标，改变顺序）；
+
+
+
+(2)
+File-->Settings-->Editor-->File Types，新建一个新的octave-cli类型，增加它的扩展名为*.m，这样就可以调整它的界面颜色了。
+
+
+
+(3)
+File-->Settings-->Editor-->Color Scheme -->Language Default，修改界面颜色。
+
+
+
+
