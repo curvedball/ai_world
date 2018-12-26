@@ -16,26 +16,20 @@ hold on
 
 
 if size(X, 2) <= 3 %zb: plot a line for the ex2data1.txt
-    % Only need 2 points to define a line, so choose two endpoints
-    plot_x = [min(X(:,2))-2,  max(X(:,2))+2]; %zb: Set the x values of two points
+    %u = linspace(20, 110, 50);
+    u = linspace(min(X(:,2))-2, max(X(:,2))+2, 50);
 
-    % Calculate the decision boundary line
-    %zb: theta0+theta1*x1 + theta2*x2=0 is the boundary. So we can calculate the x2 values
-    %zb: consider x1 as the x value, and x2 as the y value.
-    % x2 = (theta0 + theta1*x1) / (-theta2)
-    %
-    %plot_y = (-1./theta(3)).*(theta(2).*plot_x + theta(1)); %zb: OK
-    %plot_y = (-1./theta(3)).*(theta(2).*plot_x + theta(1)); %zb: also OK, the scalar value of theta(1) is converted!
-    plot_y = (-1./theta(3)).*(theta(2)*plot_x + theta(1));   %zb: still OK, * is also OK to substitue .*
-    plot_y = (-1/theta(3)).*(theta(2)*plot_x + theta(1));    %zb: OK, / to substitue ./
+    %v = linspace(20, 110, 50);
+    v = linspace(min(X(:,2))-2, max(X(:,2))+2, 50);
 
-
-    % Plot, and adjust axes for better viewing
-    plot(plot_x, plot_y, 'g-', 'linewidth', 5)
-
-    % Legend, specific for the exercise
-    legend('Admitted', 'Not admitted', 'Decision Boundary')
-    axis([30, 100, 30, 100])
+    z = zeros(length(u), length(v));
+    for i = 1:length(u)
+        for j = 1:length(v)
+            z(i,j) = [1 u(i), v(j)]*theta;
+        end
+    end
+    z = z';
+    contour(u, v, z, [0, 0], 'LineWidth', 2)
 else
     % Here is the grid range
     u = linspace(-1, 1.5, 50);
@@ -53,7 +47,7 @@ else
 
     % Plot z = 0
     % Notice you need to specify the range [0, 0]
-    %contour(u, v, z, [0, 0], 'LineWidth', 2)
+    %contour(u, v, z, [0, 0], 'LineWidth', 2)   %zb: tell contour to connect some points which have the same value!
     %contour(u, v, z, [0, 0.5, 1], 'LineWidth', 2)
     %contour(u, v, z, [0, 0.1, 1], 'LineWidth', 2)
     %contour(u, v, z, [0, 0.2, 1], 'LineWidth', 2)
