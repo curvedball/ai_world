@@ -103,6 +103,26 @@ git pull zgz_world master
 
 
 
+===========github网站下载单个文件==================
+Firefox浏览器访问: https://github.com/curvedball/
+点击选择一个文件，在浏览器中打开它，然后在页面中找到“raw”按钮，点击它就可以查看到该文件的原始内容。
+如果要下载它，就在raw按钮上, 右键-->另存为，保存。
+
+
+
+
+
+===========github网站下载单个目录==================
+Firefox浏览器访问: https://github.com/curvedball/
+(1)找到指定的文件夹，然后浏览器中选择该文件夹，右键-->"Copy Link Location"，得到url。
+(2)打开另外一个网站: https://minhaskamal.github.io/DownGit/#/home
+在输入框中粘贴得到的url之后，点击下载，就会把整个文件夹打包成一个*.zip文件下载到本地磁盘中。
+
+
+
+
+
+
 
 
 
