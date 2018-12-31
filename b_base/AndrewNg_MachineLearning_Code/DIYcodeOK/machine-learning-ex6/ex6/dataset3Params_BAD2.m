@@ -30,40 +30,42 @@ function [C, sigma] = dataset3Params(X, y, Xval, yval)
 
 
 %param_vec = [0.01 0.03 0.1 0.3 1 3 10 30];
-%param_vec = [0.3 1];
+param_vec = [0.3 1];
 %param_vec = [0.1];
-%param_vec = [0.01 0.03 0.1 0.3 1];
-param_vec = [0.1 0.3 1];      %zb: 经过测试得到的最优参数是: C=1, and sigma=0.1
 
 
 n = size(param_vec, 2);
 p = zeros(n, n);
-max_value = 0;
 
 for i = 1 : n
     for j = 1 : n
-        temp_C = param_vec(i);
-        temp_sigma = param_vec(j);
-        model= svmTrain(X, y, temp_C, @(x1, x2) gaussianKernel(x1, x2, temp_sigma));
-        pred = svmPredict(model, Xval);
-        p(i, j) = mean(double(pred == yval));   %zb: 如果是准确率，就取最大值。
-        %p(i, j) = mean(double(pred ~= yval));   %zb:如果此处改为错误率，就取最小值。~=符号标号不等于, 这样p就是错误率。
-
-        %----------------
-        v = max(max(p));
-        if (v > max_value)
-            max_value = v;
-            row_index = i;
-            column_index = j;
-            C = temp_C;
-            sigma = temp_sigma;
-        end
+        C = param_vec(i);
+        sigma = param_vec(j);
+        model= svmTrain(X, y, C, @(x1, x2) gaussianKernel(x1, x2, sigma));
+        %pred = svmPredict(model, Xval);
+        %p(i, j) = mean(double(pred ~= yval));
+        pred = svmPredict(model, X);
+        p(i, j) = mean(double(pred ~= y));
+        %p(i, j) = i + j;
     end
 end
 
+[a_val, a_index] = max(p, [], 2);
+[b_val, b_index] = max(a_val, [], 1);
+row_index = b_index;
+[temp_val, column_index] = max(p(row_index, :), [], 2);
 
-%-----------------------------
+
+
+C = param_vec(row_index);
+sigma = param_vec(column_index);
+
+
 p
+a_val
+a_index
+b_val
+b_index
 row_index
 column_index
 C
