@@ -1,0 +1,28 @@
+%X(2, :)
+%centroids
+%size(X)
+%size(centroids)
+
+d = zeros(1, K);
+for i = 1 : size(X,1)
+%for i = 1 : 3
+    %X(i, :)
+    for j = 1 : K
+        v = X(i, :) - centroids(j);
+        d(j) = sum(v.^2);
+        %d(j) = v * v';
+        %d(j)
+    end
+    %fprintf('\n\n');
+    [val, idx(i)] = min(d);
+end
+
+
+
+
+for i = 1 : size(X, 1)
+    for j = 1 : K
+    dis(j) = sum((centroids(j, :) - X(i, :)) .^ 2, 2);
+    end
+    [t, idx(i)] = min(dis);
+end
