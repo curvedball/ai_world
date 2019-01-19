@@ -15,6 +15,18 @@
 修改pycharm的*.properties文件中的４行 
 
 
+4. pycharm使用anaconda
+File-->Settings-->Project Interpreter--->选择"/srv/anaconda3/bin/python3.6"就行
+这样就可以使用numpy, scikit-learn以及tensorflow库了, 其中tensorflow库需要使用conda命令单独安装
+
+命令行如下：
+
+./conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/free/
+./conda config --set show_channel_urls yes
+./conda install tensorflow
+
+需要设置代理时，在/root/.condarc中添加代理信息，就OK
+
 
 
 

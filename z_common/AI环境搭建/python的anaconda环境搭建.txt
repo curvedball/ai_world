@@ -9,6 +9,14 @@
 
 
 
+2. 安装tensorflow
+./conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/free/
+./conda config --set show_channel_urls yes
+./conda install tensorflow
+
+需要设置代理时，在/root/.condarc中添加代理信息，就OK
+
+
 
 
 
